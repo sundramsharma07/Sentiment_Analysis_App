@@ -1,6 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { useUser } from "@clerk/clerk-react";
-
 import api from "../../api/api";
 import {
   Upload,
@@ -38,12 +36,8 @@ import {
   CheckCircle
 } from "lucide-react";
 
-
-
 export default function EnhancedSentimentAnalysisDashboard() {
   // State for sidebar and navigation
-  const { isLoaded, isSignedIn } = useUser();
-
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeMenu, setActiveMenu] = useState("dashboard");
   const [selectedCustomer, setSelectedCustomer] = useState(null);
@@ -97,16 +91,9 @@ export default function EnhancedSentimentAnalysisDashboard() {
 
   // Fetch all data on mount
   useEffect(() => {
-  if (!isLoaded || !isSignedIn) return;
-
-  const load = async () => {
-    await fetchAllData();
+    fetchAllData();
     initializeAudioVisualization();
-  };
-
-  load();
-}, [isLoaded, isSignedIn]);
-
+  }, []);
 
   const fetchAllData = async () => {
     try {
