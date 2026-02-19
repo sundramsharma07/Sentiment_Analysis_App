@@ -34,24 +34,20 @@ export default function App() {
         />
 
         {/* Protected dashboard */}
-        <Route
-          path="/dashboard"
-          element={
-            <SignedIn>
-              <Dashboard />
-            </SignedIn>
-          }
-        />
+       <Route
+  path="/dashboard"
+  element={
+    <>
+      <SignedIn>
+        <Dashboard />
+      </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+    </>
+  }
+/>
 
-        {/* Redirect if unauthenticated */}
-        <Route
-          path="/dashboard"
-          element={
-            <SignedOut>
-              <RedirectToSignIn />
-            </SignedOut>
-          }
-        />
       </Route>
     </Routes>
   );
