@@ -13,7 +13,15 @@ const __dirname = path.dirname(__filename);
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    process.env.FRONTEND_URL
+  ],
+  credentials: true
+}));
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -41,4 +49,4 @@ if (!fs.existsSync(uploadsDir)) {
   console.log("📁 Created uploads directory");
 }
 
-app.listen(PORT, () => console.log(`🚀 Backend running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Backend running on port ${PORT}`));
