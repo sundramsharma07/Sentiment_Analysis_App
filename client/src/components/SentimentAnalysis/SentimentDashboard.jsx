@@ -639,7 +639,9 @@ export default function EnhancedSentimentAnalysisDashboard() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-gray-500">Avg Confidence</p>
-                      <p className="text-3xl font-bold text-purple-600 mt-2">{dashboardStats.avgConfidence.toFixed(1)}%</p>
+                      <p className="text-3xl font-bold text-purple-600 mt-2">
+  {dashboardStats.avgConfidence ? dashboardStats.avgConfidence.toFixed(1) : '0'}%
+</p>
                     </div>
                     <div className="p-3 bg-purple-50 rounded-xl">
                       <Target className="w-6 h-6 text-purple-600" />
